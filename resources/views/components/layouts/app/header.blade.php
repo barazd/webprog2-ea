@@ -33,9 +33,9 @@
             @guest
                 <flux:separator vertical variant="subtle" class="my-2"/>
                 @if (Route::has('register'))
-                    <flux:navbar.item href="{{ route('register') }}">Regisztráció</flux:navbar.item>
+                    <flux:navbar.item href="{{ route('register') }}" :current="request()->routeIs('register')">Regisztráció</flux:navbar.item>
                 @endif
-                <flux:navbar.item href="{{ route('login') }}">Bejelentkezés</flux:navbar.item>
+                <flux:navbar.item href="{{ route('login') }}" :current="request()->routeIs('login')">Bejelentkezés</flux:navbar.item>
             @endguest
         </flux:navbar>
 
