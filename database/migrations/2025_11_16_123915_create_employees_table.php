@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
+            $table->string('name');
+            $table->string('title')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->foreignId('site_id');
         });
     }
 

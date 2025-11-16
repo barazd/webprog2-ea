@@ -17,7 +17,9 @@ class CitiesFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => faker()->bigCity(),
+            'postal_code' => random_int(1000, 9999),
+            'country_code' => 'hu'
         ];
     }
 }

@@ -17,7 +17,9 @@ class SitesFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'address' => fake()->address(),
+            'email' => fake()->unique()->companyEmail(),
+            'phone' => fake()->phoneNumber(),
         ];
     }
 }

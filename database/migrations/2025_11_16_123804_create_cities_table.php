@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
+            $table->string('name');
+            $table->string('country_code');
+            $table->integer('postal_code');
         });
     }
 

@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('cities_id');
+            $table->string('address');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
         });
     }
 
