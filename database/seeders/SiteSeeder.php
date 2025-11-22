@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Site;
+use App\Models\Employee;
 
 class SiteSeeder extends Seeder
 {
@@ -15,7 +16,8 @@ class SiteSeeder extends Seeder
     {
         Site::factory()
             ->count(10)
-            ->hasEmployees(random_int(1, 6))
+            ->has(
+                Employee::factory()->count(random_int(1, 6)))
             ->create();
     }
 }
