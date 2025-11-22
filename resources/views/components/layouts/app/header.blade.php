@@ -20,13 +20,13 @@
             <flux:navbar.item icon="home" :href="route('home')" :current="request()->routeIs('home')" wire:navigate>
                 Főoldal
             </flux:navbar.item>
-            <flux:navbar.item icon="user-group" href="#">Mérnökeink</flux:navbar.item>
+            <flux:navbar.item icon="user-group" :href="route('engineers')" :current="request()->routeIs('engineers')" wire:navigate>Mérnökeink</flux:navbar.item>
             <flux:navbar.item icon="chat-bubble-bottom-center-text" href="#">Kapcsolat</flux:navbar.item>
             @auth
                 <flux:navbar.item icon="inbox" badge="12" href="#">Üzenetek</flux:navbar.item>
             @endauth
             <flux:navbar.item icon="chart-pie" href="#">Diagram</flux:navbar.item>
-            <flux:navbar.item icon="table-cells" href="#">CRUD</flux:navbar.item>
+            <flux:navbar.item icon="table-cells" :href="route('crud.employees.index')" :current="request()->routeIs('crud.*')" wire:navigate>CRUD</flux:navbar.item>
             @auth
                 @if (auth()->user()->hasRole('admin'))
                     <flux:navbar.item icon="adjustments-horizontal" :href="route('admin')" :current="request()->routeIs('admin')" wire:navigate>Admin</flux:navbar.item>

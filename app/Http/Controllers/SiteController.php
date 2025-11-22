@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSitesRequest;
-use App\Http\Requests\UpdateSitesRequest;
-use App\Models\Sites;
+use App\Http\Requests\StoreSiteRequest;
+use App\Http\Requests\UpdateSiteRequest;
+use App\Models\Site;
 
-class SitesController extends Controller
+class SiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class SitesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSitesRequest $request)
+    public function store(StoreSiteRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class SitesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sites $sites)
+    public function show(Site $site)
     {
         //
     }
@@ -43,7 +43,7 @@ class SitesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sites $sites)
+    public function edit(Site $site)
     {
         //
     }
@@ -51,7 +51,7 @@ class SitesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSitesRequest $request, Sites $sites)
+    public function update(UpdateSiteRequest $request, Site $site)
     {
         //
     }
@@ -59,7 +59,7 @@ class SitesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sites $sites)
+    public function destroy(Site $site)
     {
         //
     }

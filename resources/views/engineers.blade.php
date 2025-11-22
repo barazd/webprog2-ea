@@ -1,4 +1,4 @@
-<x-layouts.app :title="__('Kezdőlap')">
+<x-layouts.app title="Mérnökeink">
     <div class="mx-auto w-full [:where(&)]:max-w-7xl sm:px-6 lg:px-8 flex flex-1 flex-col gap-4">
         <h2 class="text-2xl font-extrabold">A mérnökeink</h2>
         <p>Cégünket az ország számos pontján, több telephelyen is megtalálhatja. Lépjen kapcsolatba az Önhöz legközelebbi telephelyen dolgozó mérnökeinkkel!</p>

@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEmployeesRequest;
-use App\Http\Requests\UpdateEmployeesRequest;
-use App\Models\Employee;
+use App\Http\Requests\StoreCityRequest;
+use App\Http\Requests\UpdateCityRequest;
+use App\Models\City;
 
-class EmployeesController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('crud.cities.index', [
+            'cities' => City::all()
+        ]); 
     }
 
     /**
@@ -27,7 +29,7 @@ class EmployeesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEmployeesRequest $request)
+    public function store(StoreCityRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class EmployeesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employee $employee)
+    public function show(City $city)
     {
         //
     }
@@ -43,7 +45,7 @@ class EmployeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Employee $employee)
+    public function edit(City $city)
     {
         //
     }
@@ -51,7 +53,7 @@ class EmployeesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEmployeesRequest $request, Employee $employee)
+    public function update(UpdateCityRequest $request, City $city)
     {
         //
     }
@@ -59,7 +61,7 @@ class EmployeesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $employee)
+    public function destroy(City $city)
     {
         //
     }
