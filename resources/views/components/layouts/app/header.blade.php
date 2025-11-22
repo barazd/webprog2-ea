@@ -28,7 +28,9 @@
             <flux:navbar.item icon="chart-pie" href="#">Diagram</flux:navbar.item>
             <flux:navbar.item icon="table-cells" href="#">CRUD</flux:navbar.item>
             @auth
-                <flux:navbar.item icon="adjustments-horizontal" href="#">Admin</flux:navbar.item>
+                @if (auth()->user()->hasRole('admin'))
+                    <flux:navbar.item icon="adjustments-horizontal" :href="route('admin')" :current="request()->routeIs('admin')" wire:navigate>Admin</flux:navbar.item>
+                @endif
             @endauth
             @guest
                 <flux:separator vertical variant="subtle" class="my-2"/>
@@ -61,6 +63,17 @@
                                 <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
                                 <span class="truncate text-xs">{{ auth()->user()->email }}</span>
                             </div>
+                        </div>
+                    </div>
+                </flux:menu.radio.group>
+
+                <flux:menu.radio.group>
+                    <div class="p-0 text-sm font-normal">
+                        <div class="grid flex-1 text-start text-sm leading-tight">
+                            <span class="truncate font-semibold">Szerepkörök</span>
+                            @foreach (auth()->user()->roles as $role)
+                                <span class="truncate text-xs">{{ $role->name }}</span>
+                            @endforeach
                         </div>
                     </div>
                 </flux:menu.radio.group>

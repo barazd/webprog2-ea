@@ -6,15 +6,16 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use App\Http\Middleware\UserHasRole;
 
 Route::redirect('/', '/home');
 
 Route::view('home', 'home')
     ->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::view('admin', 'admin')
+    ->middleware(['auth', 'verified', UserHasRole::class . ':admin'])
+    ->name('admin');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
