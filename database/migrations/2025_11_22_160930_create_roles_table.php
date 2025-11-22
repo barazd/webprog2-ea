@@ -19,7 +19,7 @@ return new class extends Migration
         });
 
         // Kapcsoló tábla az n:n miatt
-        Schema::create('user_role', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->foreignId('user_id');
             $table->foreignId('role_id');
             $table->timestamps();
@@ -32,7 +32,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_role');
+        Schema::dropIfExists('role_user');
         Schema::dropIfExists('roles');
     }
 };

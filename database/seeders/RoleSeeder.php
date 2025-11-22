@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -13,11 +14,11 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         // A két alapértelmezett szerepkör
-        User::create([
+        Role::create([
             'slug' => 'default',
             'name' => 'Regisztrált vendég'
         ]);
-        User::create([
+        Role::create([
             'slug' => 'admin',
             'name' => 'Adminisztrátor'
         ]);
