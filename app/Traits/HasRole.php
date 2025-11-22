@@ -56,8 +56,8 @@ trait HasRole
     */
     function hasRole(string|int|array $roles): bool
     {
-        $roleIds = $this->getRoleIds($roles);
+        $roles = Role::find($this->getRoleIds($roles));
 
-        return $this->whereAttachedTo($role)->count();
+        return $this->whereAttachedTo($roles)->count();
     }
 }
