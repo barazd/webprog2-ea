@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEmployeesRequest;
 use App\Http\Requests\UpdateEmployeesRequest;
-use App\Models\Employees;
+use App\Models\Employee;
 
 class EmployeesController extends Controller
 {
@@ -35,7 +35,7 @@ class EmployeesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employees $employees)
+    public function show(Employee $employee)
     {
         //
     }
@@ -43,7 +43,7 @@ class EmployeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Employees $employees)
+    public function edit(Employee $employee)
     {
         //
     }
@@ -51,7 +51,7 @@ class EmployeesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEmployeesRequest $request, Employees $employees)
+    public function update(UpdateEmployeesRequest $request, Employee $employee)
     {
         //
     }
@@ -59,7 +59,7 @@ class EmployeesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employees $employees)
+    public function destroy(Employee $employee)
     {
         //
     }

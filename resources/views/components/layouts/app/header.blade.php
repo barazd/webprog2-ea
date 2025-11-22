@@ -7,7 +7,7 @@
 
 <body class="min-h-screen bg-white dark:bg-zinc-800">
     <flux:header container
-        class="border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 m-6 lg:m-8 rounded-xl">
+        class="border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 sm:m-6 lg:m-8 sm:rounded-xl">
         <flux:sidebar.toggle class="lg:hidden" icon="bars-3" inset="left" />
 
         <!-- Fekvő menü -->

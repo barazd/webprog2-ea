@@ -1,5 +1,5 @@
 <x-layouts.app :title="__('Kezdőlap')">
-    <div class="mx-auto w-full [:where(&)]:max-w-7xl px-6 lg:px-8 flex flex-1 flex-col gap-4">
+    <div class="mx-auto w-full [:where(&)]:max-w-7xl sm:px-6 lg:px-8 flex flex-1 flex-col gap-4">
         <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
             <div class="relative">
                 <img class="w-full" src="/storage/sven-daniel-DV_rG1mjDxs-unsplash.webp" alt="" />

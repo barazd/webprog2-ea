@@ -18,8 +18,8 @@ class CitySeeder extends Seeder
         City::factory()
             ->count(10)
             ->has(
-                Site::factory()->count(random_int(1, 6))->has(
-                    Employee::factory()->count(random_int(1, 6))))
+                Site::factory()->count(random_int(1, 3))->has(
+                    Employee::factory()->count(random_int(1, 5))))
             ->create();
     }
 }

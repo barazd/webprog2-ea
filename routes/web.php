@@ -7,11 +7,14 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use App\Http\Middleware\UserHasRole;
+use App\Http\Controllers\EngineerController;
 
 Route::redirect('/', '/home');
 
 Route::view('home', 'home')
     ->name('home');
+
+Route::get('engineers', [EngineerController::class, 'index'])->name('engineers');
 
 Route::view('admin', 'admin')
     ->middleware(['auth', 'verified', UserHasRole::class . ':admin'])
