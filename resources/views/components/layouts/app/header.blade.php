@@ -20,7 +20,7 @@
             <flux:navbar.item icon="home" :href="route('home')" :current="request()->routeIs('home')" wire:navigate>
                 Főoldal
             </flux:navbar.item>
-            <flux:navbar.item icon="circle-stack" href="#">Adatbázis</flux:navbar.item>
+            <flux:navbar.item icon="user-group" href="#">Mérnökeink</flux:navbar.item>
             <flux:navbar.item icon="chat-bubble-bottom-center-text" href="#">Kapcsolat</flux:navbar.item>
             @auth
                 <flux:navbar.item icon="inbox" badge="12" href="#">Üzenetek</flux:navbar.item>
