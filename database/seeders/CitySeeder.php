@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\City;
-use App\Models\Site;
-use App\Models\Employee;
 
 class CitySeeder extends Seeder
 {
@@ -17,9 +15,6 @@ class CitySeeder extends Seeder
     {
         City::factory()
             ->count(10)
-            ->has(
-                Site::factory()->count(random_int(1, 3))->has(
-                    Employee::factory()->count(random_int(1, 5))))
             ->create();
     }
 }
