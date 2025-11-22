@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Sites extends Model
+class Site extends Model
 {
     /** @use HasFactory<\Database\Factories\SitesFactory> */
     use HasFactory;
-    use HasSoftDeletes;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

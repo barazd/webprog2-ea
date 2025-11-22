@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreignId('cities_id');
+            $table->foreignId('city_id');
             $table->string('address');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();

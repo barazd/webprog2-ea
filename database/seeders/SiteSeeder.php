@@ -4,14 +4,18 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Site;
 
-class EmployeesSeeder extends Seeder
+class SiteSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        //
+        Site::factory()
+            ->count(10)
+            ->hasEmployees(random_int(1, 6))
+            ->create();
     }
 }

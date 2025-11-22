@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cities>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Sites>
  */
-class CitiesFactory extends Factory
+class SiteFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,9 @@ class CitiesFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => faker()->bigCity(),
-            'postal_code' => random_int(1000, 9999),
-            'country_code' => 'hu'
+            'address' => fake()->address(),
+            'email' => fake()->unique()->companyEmail(),
+            'phone' => fake()->phoneNumber(),
         ];
     }
 }

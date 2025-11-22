@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Cities extends Model
+class City extends Model
 {
     /** @use HasFactory<\Database\Factories\CitiesFactory> */
     use HasFactory;
-    use HasSoftDeletes;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
