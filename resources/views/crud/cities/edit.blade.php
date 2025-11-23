@@ -1,22 +1,23 @@
-<x-layouts.app :title="'CRUD - Város szerkesztése: ' . $city->name">
-    <x-crud.layout lead="A mérnökeink oldalon megjelenő városok szerkesztése.">
-        <form wire:submit="updateCity" class="my-6 w-full space-y-6">
-            <flux:input wire:model="name" label="Név" type="text" required autofocus autocomplete="name" />
+<x-layouts.app :title="'CRUD - ' . (($method == 'PUT') ? ($city->name . ' város szerkesztése') : 'Új város hozzáadása')">
+    <x-crud.layout :lead="'A mérnökeink oldalon megjelenő ' . (($method == 'PUT') ? ($city->name . ' város szerkesztése') : 'új város hozzáadása')">
+        <form method="POST" action="{{ ($method == 'POST') ? route('crud.cities.store') : route('crud.cities.update', $city->id) }}" class="my-6 w-full space-y-6">
+            {{ csrf_field() }}
+            {{ method_field($method) }}
 
-            <flux:input wire:model="postal_code" label="E-mail cím" type="number" required autocomplete="postal_code" />
+            @if ($method == 'PUT')
+            <flux:input name="id" :value="$city->id" label="ID" type="number" required  disabled />
+            @endif
 
-            <flux:input wire:model="country_code" label="E-mail cím" type="text" required autocomplete="country_code" />
+            <flux:input name="name" :value="old('name') ?? $city->name ?? ''" label="Név" type="text" required autofocus autocomplete="name" />
 
-            <flux:input wire:model="email" label="E-mail cím" type="email" required autocomplete="email" />
+            <flux:input name="postal_code" :value="old('postal_code') ?? $city->postal_code ?? ''" label="Irányítószám" type="number" required autocomplete="postal_code" />
+
+            <flux:input name="country_code" :value="old('country_code') ?? $city->country_code ?? ''" label="Országkód" type="text" required autocomplete="country_code" />     
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center justify-end">
-                    <flux:button variant="primary" type="submit" class="w-full">Metés</flux:button>
+                    <flux:button variant="primary" color="green" type="submit" class="w-full">Metés</flux:button>
                 </div>
-
-                <x-action-message class="me-3" on="profile-updated">
-                    Mentve.
-                </x-action-message>
             </div>
         </form>
     </x-crud.layout>

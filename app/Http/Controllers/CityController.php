@@ -24,7 +24,10 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        return view('crud.cities.edit', [
+            'city' => [],
+            'method' => 'POST',
+        ]);
     }
 
     /**
@@ -32,7 +35,12 @@ class CityController extends Controller
      */
     public function store(StoreCityRequest $request)
     {
-        //
+        $city = City::create($request->validated());
+
+        return view('crud.cities.edit', [
+            'city' => $city,
+            'method' => 'PUT',
+        ]);
     }
 
     /**
@@ -48,7 +56,10 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        //
+        return view('crud.cities.edit', [
+            'city' => $city,
+            'method' => 'PUT',
+        ]);
     }
 
     /**
@@ -56,7 +67,12 @@ class CityController extends Controller
      */
     public function update(UpdateCityRequest $request, City $city)
     {
-        //
+        $city->update($request->validated());
+
+        return view('crud.cities.edit', [
+            'city' => $city,
+            'method' => 'PUT',
+        ]);
     }
 
     /**
