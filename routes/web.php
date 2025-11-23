@@ -24,12 +24,17 @@ Route::view('admin', 'admin')
     ->name('admin');
 
 Route::prefix('crud')->name('crud.')->group(function () {
-    Route::resource('cities', CityController::class);
-    Route::resource('sites', SiteController::class);
-    Route::resource('employees', EmployeeController::class);
+    Route::resource('cities', CityController::class)->except(['show']);
+    Route::resource('sites', SiteController::class)->except(['show']);
+    Route::resource('employees', EmployeeController::class)->except(['show']);
 });
 
+Route::get('messages/create', [MessgaeController::class, 'create'])->name('messages.create');
+Route::post('messages', [MessgaeController::class, 'store'])->name('messages.store');
+
 Route::middleware(['auth'])->group(function () {
+    Route::get('messages/index', [MessgaeController::class, 'index'])->name('messages.index');
+
     Route::redirect('settings', 'settings/profile');
 
     Route::get('settings/profile', Profile::class)->name('profile.edit');
