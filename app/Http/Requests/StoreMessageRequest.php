@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreMessageRequest extends FormRequest
 {
@@ -35,8 +36,8 @@ class StoreMessageRequest extends FormRequest
         return [
             'subject' => 'string|max:200|nullable',
             'message' => 'string|required',
-            'email' => 'email|required_if:user_id,null',
-            'user_id' => 'exists:App\Models\User,id|required_if:email,null',
+            'email' => 'email|required_without:user_id',
+            'user_id' => 'required_without:email',
         ];
     }
 }

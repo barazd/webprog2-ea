@@ -23,8 +23,8 @@ class Message extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class)->withDefault([
-            $user->name = 'Anonymous',
-            $user->email = $this->email,
+            'name' => 'Anonymous',
+            'email' => $this->email,
         ]);
     }
 
