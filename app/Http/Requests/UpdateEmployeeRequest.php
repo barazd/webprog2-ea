@@ -22,7 +22,11 @@ class UpdateEmployeeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'string|required',
+            'title' => 'string|required',
+            'phone' => 'string|required',
+            'email' => 'email|required',
+            'site_id' => 'exists:App\Models\Site,id|required',
         ];
     }
 }

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEmployeesRequest;
-use App\Http\Requests\UpdateEmployeesRequest;
+use App\Http\Requests\StoreEmployeeRequest;
+use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
+use App\Models\Site;
 use Illuminate\Http\RedirectResponse;
 
 class EmployeeController extends Controller
@@ -24,15 +25,31 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $sites = Site::all();
+
+        return view('crud.employees.edit', [
+            'employee' => [],
+            'sites' => $sites,
+            'method' => 'POST',
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEmployeesRequest $request)
+    public function store(StoreEmployeeRequest $request)
     {
-        //
+        $employee = Employee::create($request->validated());
+
+        $request->session()->flash('success', 'Munkavállaló sikeresen létrehozva!');
+
+        $sites = Site::all();
+
+        return view('crud.employees.edit', [
+            'employee' => $employee,
+            'sites' => $sites,
+            'method' => 'PUT',
+        ]);
     }
 
     /**
@@ -48,15 +65,31 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $sites = Site::all();
+
+        return view('crud.employees.edit', [
+            'employee' => $employee,
+            'sites' => $sites,
+            'method' => 'PUT',
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEmployeesRequest $request, Employee $employee)
+    public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $employee->update($request->validated());
+        
+        $request->session()->flash('success', 'Munkavállaló sikeresen módosítva!');
+        
+        $sites = Site::all();
+
+        return view('crud.employees.edit', [
+            'employee' => $employee,
+            'sites' => $sites,
+            'method' => 'PUT',
+        ]);
     }
 
     /**

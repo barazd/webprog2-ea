@@ -41,6 +41,8 @@ class SiteController extends Controller
     {
         $site = Site::create($request->validated());
 
+        $request->session()->flash('success', 'Telephely sikeresen létrehozva!');
+
         $cities = City::all();
 
         return view('crud.sites.edit', [
@@ -78,6 +80,8 @@ class SiteController extends Controller
     public function update(UpdateSiteRequest $request, Site $site)
     {
         $site->update($request->validated());
+
+        $request->session()->flash('success', 'Telephely sikeresen módosítva!');
 
         $cities = City::all();
 

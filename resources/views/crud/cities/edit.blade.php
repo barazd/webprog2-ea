@@ -18,6 +18,8 @@
                 <div class="flex items-center justify-end">
                     <flux:button variant="primary" color="green" type="submit" class="w-full">Metés</flux:button>
                 </div>
+
+                <x-success-message />
             </div>
         </form>
     </x-crud.layout>

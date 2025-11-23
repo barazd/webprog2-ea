@@ -37,6 +37,8 @@ class CityController extends Controller
     {
         $city = City::create($request->validated());
 
+        $request->session()->flash('success', 'Város sikeresen létrehozva!');
+
         return view('crud.cities.edit', [
             'city' => $city,
             'method' => 'PUT',
@@ -68,6 +70,8 @@ class CityController extends Controller
     public function update(UpdateCityRequest $request, City $city)
     {
         $city->update($request->validated());
+
+        $request->session()->flash('success', 'Város sikeresen módosítva!');
 
         return view('crud.cities.edit', [
             'city' => $city,

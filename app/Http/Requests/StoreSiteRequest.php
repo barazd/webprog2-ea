@@ -25,7 +25,7 @@ class StoreSiteRequest extends FormRequest
             'address' => 'string|required',
             'phone' => 'string|nullable',
             'email' => 'email|nullable',
-            'city_id' => 'exists:App\Models\City,id',
+            'city_id' => 'exists:App\Models\City,id|required',
         ];
     }
 }
