@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEmployeesRequest;
 use App\Http\Requests\UpdateEmployeesRequest;
 use App\Models\Employee;
+use Illuminate\Http\RedirectResponse;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +14,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return view('crud.employees.index', [
+            'employees' => Employee::all()
+        ]); 
     }
 
     /**
@@ -59,8 +62,10 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $employee)
+    public function destroy(Employee $employee): RedirectResponse
     {
-        //
+        $employee->delete();
+
+        return redirect('/crud/employees');
     }
 }

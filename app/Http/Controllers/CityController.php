@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCityRequest;
 use App\Http\Requests\UpdateCityRequest;
 use App\Models\City;
+use Illuminate\Http\RedirectResponse;
 
 class CityController extends Controller
 {
@@ -61,8 +62,10 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(City $city)
+    public function destroy(City $city): RedirectResponse
     {
-        //
+        $city->delete();
+
+        return redirect('/crud/cities');
     }
 }

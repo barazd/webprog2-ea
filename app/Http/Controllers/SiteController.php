@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSiteRequest;
 use App\Http\Requests\UpdateSiteRequest;
 use App\Models\Site;
+use Illuminate\Http\RedirectResponse;
 
 class SiteController extends Controller
 {
@@ -13,7 +14,9 @@ class SiteController extends Controller
      */
     public function index()
     {
-        //
+        return view('crud.sites.index', [
+            'sites' => Site::all()
+        ]); 
     }
 
     /**
@@ -59,8 +62,10 @@ class SiteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Site $site)
+    public function destroy(Site $site): RedirectResponse
     {
-        //
+        $site->delete();
+
+        return redirect('/crud/sites');
     }
 }

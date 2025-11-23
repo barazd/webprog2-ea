@@ -1,6 +1,5 @@
 <x-layouts.app title="CRUD - Városok listázása">
     <x-crud.layout lead="A mérnökeink oldalon megjelenő városok szerkesztése.">
-        
 
         <x-table>
             <thead>
@@ -22,15 +21,20 @@
                     <x-table.td>{{ $city->country_code }}</x-table.td>
                     <x-table.td>{{ $city->updated_at }}</x-table.td>
                     <x-table.td>
-                        <flux:button.group class="justify-end">
-                            <flux:button size="sm" icon="trash" variant="danger" title="Törlés" :href="route('crud.cities.destroy', $city->id)" wire:navigate></flux:button>
-                            <flux:button size="sm" icon="pencil-square" :href="route('crud.cities.edit', $city->id)" wire:navigate>Szerkesztés</flux:button>
-                        </flux:button.group>
+                        <form method="POST" action="{{ route('crud.cities.destroy', $city->id) }}">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <flux:button.group class="justify-end">
+                                <x-confirm :id="$city->id">
+                                    <flux:button size="sm" icon="trash" variant="danger" title="Törlés"></flux:button>
+                                </x-confirm>
+                                <flux:button size="sm" icon="pencil-square" :href="route('crud.cities.edit', $city->id)" wire:navigate>Szerkesztés</flux:button>
+                            </flux:button.group>
+                        </form>
                     </x-table.td>
                 </tr>
             @endforeach
             </tbody>
         </x-table>
-
     </x-crud.layout>
 </x-layouts.app>
