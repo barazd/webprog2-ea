@@ -12,6 +12,8 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ChartPage;
+
 
 Route::redirect('/', '/home');
 
@@ -19,6 +21,8 @@ Route::view('home', 'home')
     ->name('home');
 
 Route::get('engineers', [EngineerController::class, 'index'])->name('engineers');
+
+Route::get('chart', ChartPage::class)->name('chart');
 
 Route::view('admin', 'admin')
     ->middleware(['auth', 'verified', UserHasRole::class . ':admin'])
