@@ -14,7 +14,7 @@ class MessageController extends Controller
     public function index()
     {
         return view('messages.index', [
-            'employees' => Message::all()
+            'messages' => Message::orderByDesc('created_at')->get()
         ]); 
     }
 

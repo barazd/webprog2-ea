@@ -21,9 +21,9 @@
                 Főoldal
             </flux:navbar.item>
             <flux:navbar.item icon="user-group" :href="route('engineers')" :current="request()->routeIs('engineers')" wire:navigate>Mérnökeink</flux:navbar.item>
-            <flux:navbar.item icon="chat-bubble-bottom-center-text" href="#">Kapcsolat</flux:navbar.item>
+            <flux:navbar.item icon="chat-bubble-bottom-center-text" :href="route('messages.create')" :current="request()->routeIs('messages.create')" wire:navigate>Kapcsolat</flux:navbar.item>
             @auth
-                <flux:navbar.item icon="inbox" badge="12" href="#">Üzenetek</flux:navbar.item>
+                <flux:navbar.item icon="inbox" :href="route('messages.index')" :current="request()->routeIs('messages.index')" wire:navigate>Üzenetek</flux:navbar.item>
             @endauth
             <flux:navbar.item icon="chart-pie" href="#">Diagram</flux:navbar.item>
             <flux:navbar.item icon="table-cells" :href="route('crud.employees.index')" :current="request()->routeIs('crud.*')" wire:navigate>CRUD</flux:navbar.item>

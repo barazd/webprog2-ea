@@ -11,6 +11,7 @@ use App\Http\Controllers\EngineerController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MessageController;
 
 Route::redirect('/', '/home');
 
@@ -29,11 +30,11 @@ Route::prefix('crud')->name('crud.')->group(function () {
     Route::resource('employees', EmployeeController::class)->except(['show']);
 });
 
-Route::get('messages/create', [MessgaeController::class, 'create'])->name('messages.create');
-Route::post('messages', [MessgaeController::class, 'store'])->name('messages.store');
+Route::get('messages/create', [MessageController::class, 'create'])->name('messages.create');
+Route::post('messages/create', [MessageController::class, 'store'])->name('messages.store');
+Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('messages/index', [MessgaeController::class, 'index'])->name('messages.index');
 
     Route::redirect('settings', 'settings/profile');
 
