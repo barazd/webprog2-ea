@@ -1,4 +1,4 @@
-<x-layouts.app :title="__('Kezdőlap')">
+<x-layouts.app title="Admin oldal">
     <div class="mx-auto w-full [:where(&)]:max-w-7xl px-6 lg:px-8 flex flex-1 flex-col gap-4">
         <x-card>
             <h3 class="text-2xl font-extrabold">Gratulálunk!</h3>

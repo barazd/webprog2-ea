@@ -7,7 +7,7 @@
 
 <body class="min-h-screen bg-white dark:bg-zinc-800">
     <flux:header container
-        class="border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 m-6 lg:m-8 rounded-xl">
+        class="border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 sm:m-6 lg:m-8 sm:rounded-xl">
         <flux:sidebar.toggle class="lg:hidden" icon="bars-3" inset="left" />
 
         <!-- Fekvő menü -->
@@ -20,13 +20,13 @@
             <flux:navbar.item icon="home" :href="route('home')" :current="request()->routeIs('home')" wire:navigate>
                 Főoldal
             </flux:navbar.item>
-            <flux:navbar.item icon="user-group" href="#">Mérnökeink</flux:navbar.item>
-            <flux:navbar.item icon="chat-bubble-bottom-center-text" href="#">Kapcsolat</flux:navbar.item>
+            <flux:navbar.item icon="user-group" :href="route('engineers')" :current="request()->routeIs('engineers')" wire:navigate>Mérnökeink</flux:navbar.item>
+            <flux:navbar.item icon="chat-bubble-bottom-center-text" :href="route('messages.create')" :current="request()->routeIs('messages.create')" wire:navigate>Kapcsolat</flux:navbar.item>
             @auth
-                <flux:navbar.item icon="inbox" badge="12" href="#">Üzenetek</flux:navbar.item>
+                <flux:navbar.item icon="inbox" :href="route('messages.index')" :current="request()->routeIs('messages.index')" wire:navigate>Üzenetek</flux:navbar.item>
             @endauth
             <flux:navbar.item icon="chart-pie" href="#">Diagram</flux:navbar.item>
-            <flux:navbar.item icon="table-cells" href="#">CRUD</flux:navbar.item>
+            <flux:navbar.item icon="table-cells" :href="route('crud.employees.index')" :current="request()->routeIs('crud.*')" wire:navigate>CRUD</flux:navbar.item>
             @auth
                 @if (auth()->user()->hasRole('admin'))
                     <flux:navbar.item icon="adjustments-horizontal" :href="route('admin')" :current="request()->routeIs('admin')" wire:navigate>Admin</flux:navbar.item>

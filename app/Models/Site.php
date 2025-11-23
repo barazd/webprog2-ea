@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Observers\SiteObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy([SiteObserver::class])]
 class Site extends Model
 {
     /** @use HasFactory<\Database\Factories\SitesFactory> */
@@ -19,7 +22,7 @@ class Site extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['adress', 'city_id', 'email', 'phone'];
+    protected $fillable = ['address', 'city_id', 'email', 'phone'];
 
     /**
      * Get the city where the site is.

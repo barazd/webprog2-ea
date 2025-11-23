@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
         // A két alapértelmezett szerepkör
         Role::create([
             'slug' => 'default',
-            'name' => 'Regisztrált vendég'
+            'name' => 'Regisztrált látogató'
         ]);
         Role::create([
             'slug' => 'admin',

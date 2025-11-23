@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Traits\HasRole;
 
 class User extends Authenticatable
@@ -59,6 +60,18 @@ class User extends Authenticatable
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * Get the messages for the blog post.
+     */
+
+    public function messages(): HasMany
+
+    {
+
+        return $this->hasMany(Message::class);
+
     }
 
     /**
