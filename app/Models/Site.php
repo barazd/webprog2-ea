@@ -22,7 +22,7 @@ class Site extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['adress', 'city_id', 'email', 'phone'];
+    protected $fillable = ['address', 'city_id', 'email', 'phone'];
 
     /**
      * Get the city where the site is.

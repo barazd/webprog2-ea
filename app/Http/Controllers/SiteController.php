@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSiteRequest;
 use App\Http\Requests\UpdateSiteRequest;
 use App\Models\Site;
+use App\Models\City;
 use Illuminate\Http\RedirectResponse;
 
 class SiteController extends Controller
@@ -24,7 +25,13 @@ class SiteController extends Controller
      */
     public function create()
     {
-        //
+        $cities = City::all();
+
+        return view('crud.sites.edit', [
+            'site' => [],
+            'cities' => $cities,
+            'method' => 'POST',
+        ]);
     }
 
     /**
@@ -32,7 +39,15 @@ class SiteController extends Controller
      */
     public function store(StoreSiteRequest $request)
     {
-        //
+        $site = Site::create($request->validated());
+
+        $cities = City::all();
+
+        return view('crud.sites.edit', [
+            'site' => $site,
+            'cities' => $cities,
+            'method' => 'PUT',
+        ]);
     }
 
     /**
@@ -48,7 +63,13 @@ class SiteController extends Controller
      */
     public function edit(Site $site)
     {
-        //
+        $cities = City::all();
+
+        return view('crud.sites.edit', [
+            'site' => $site,
+            'cities' => $cities,
+            'method' => 'PUT',
+        ]);
     }
 
     /**
@@ -56,7 +77,15 @@ class SiteController extends Controller
      */
     public function update(UpdateSiteRequest $request, Site $site)
     {
-        //
+        $site->update($request->validated());
+
+        $cities = City::all();
+
+        return view('crud.sites.edit', [
+            'site' => $site,
+            'cities' => $cities,
+            'method' => 'PUT',
+        ]);
     }
 
     /**

@@ -22,7 +22,10 @@ class UpdateSiteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'address' => 'string|required',
+            'phone' => 'string|nullable',
+            'email' => 'email|nullable',
+            'city_id' => 'exists:App\Models\City,id',
         ];
     }
 }

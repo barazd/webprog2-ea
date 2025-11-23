@@ -12,7 +12,7 @@
                     <x-table.th>Központi e-mail</x-table.th>
                     <x-table.th>Város</x-table.th>
                     <x-table.th>Utolsó módosítás</x-table.th>
-                    <x-table.th class="text-right"><flux:button size="sm" variant="primary" color="green" icon="plus" :href="route('crud.sites.create')" wire:navigate>Új város hozzáadása</flux:button></x-table.th>
+                    <x-table.th class="text-right"><flux:button size="sm" variant="primary" color="green" icon="plus" :href="route('crud.sites.create')" wire:navigate>Új telephely</flux:button></x-table.th>
                 </tr>
             </thead>
             <tbody>
