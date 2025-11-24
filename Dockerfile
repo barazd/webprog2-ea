@@ -29,8 +29,6 @@ COPY . /var/www/html
 RUN composer install --no-interaction --no-plugins --no-scripts
 RUN npm install && npm run build
 
-RUN chown -R www-data:www-data .
-
 EXPOSE 9000
 
 ENTRYPOINT ["docker-entrypoint.sh"]
