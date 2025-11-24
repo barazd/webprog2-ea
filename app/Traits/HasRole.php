@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Role;
+use Illuminate\Database\Eloquent\Builder;
 
 trait HasRole
 {
@@ -42,7 +43,7 @@ trait HasRole
     /*
     * Remove role
     */
-    function removeRole(string|int|array $roles)
+    public function removeRole(string|int|array $roles)
     {
         $roleIds = $this->getRoleIds($roles);
 
@@ -54,10 +55,8 @@ trait HasRole
     /*
     * Has role (ANY)
     */
-    function hasRole(string|int|array $roles): bool
+    public function hasRole(string|int|array $roles)
     {
-        $roles = Role::find($this->getRoleIds($roles));
-
-        return $this->whereAttachedTo($roles)->count();
+        return $roles = $this->roles()->whereIn('id', $this->getRoleIds($roles))->count();
     }
 }
