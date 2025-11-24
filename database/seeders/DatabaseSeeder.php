@@ -8,8 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\City;
 use App\Models\Site;
 use App\Models\Employee;
-
-
+use Illuminate\Support\Facades\Hash;
 
 
 class DatabaseSeeder extends Seeder
@@ -35,5 +34,12 @@ class DatabaseSeeder extends Seeder
         $this->call(
             RoleSeeder::class,
         );
+
+        // Create admin user for testing
+        User::create([
+            'name' => 'testadmin',
+            'email' => 'test@admin.hu',
+            'password' => Hash::make('testADMIN123'),
+        ])->addRole(['default', 'admin']);
     }
 }
