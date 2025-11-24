@@ -109,16 +109,26 @@
 
         <flux:navlist variant="outline">
             <flux:navlist.group :heading="__('Főmenü')">
-                <flux:navbar.item icon="home" :href="route('home')" :current="request()->routeIs('home')"
-                    wire:navigate>
-                    Főoldal
-                </flux:navbar.item>
-                <flux:navbar.item icon="circle-stack" href="#">Adatbázis</flux:navbar.item>
-                <flux:navbar.item icon="chat-bubble-bottom-center-text" href="#">Kapcsolat</flux:navbar.item>
-                <flux:navbar.item icon="inbox" badge="12" href="#">Üzenetek</flux:navbar.item>
-                <flux:navbar.item icon="chart-pie" href="#">Diagram</flux:navbar.item>
-                <flux:navbar.item icon="table-cells" href="#">CRUD</flux:navbar.item>
-                <flux:navbar.item icon="adjustments-horizontal" href="#">Admin</flux:navbar.item>
+                <flux:navlist.item icon="home" :href="route('home')" :current="request()->routeIs('home')" wire:navigate>Főoldal</flux:navlist.item>
+                <flux:navlist.item icon="user-group" :href="route('engineers')" :current="request()->routeIs('engineers')" wire:navigate>Mérnökeink</flux:navlist.item>
+                <flux:navlist.item icon="chat-bubble-bottom-center-text" :href="route('messages.create')" :current="request()->routeIs('messages.create')" wire:navigate>Kapcsolat</flux:navlist.item>
+                @auth
+                    <flux:navlist.item icon="inbox" :href="route('messages.index')" :current="request()->routeIs('messages.index')" wire:navigate>Üzenetek</flux:navlist.item>
+                @endauth
+                <flux:navlist.item icon="chart-pie" :href="route('chart')" :current="request()->routeIs('chart')" wire:navigate>Diagram</flux:navlist.item>
+                <flux:navlist.item icon="table-cells" :href="route('crud.employees.index')" :current="request()->routeIs('crud.*')" wire:navigate>CRUD</flux:navlist.item>
+                @auth
+                    @if (auth()->user()->hasRole('admin'))
+                        <flux:navlist.item icon="adjustments-horizontal" :href="route('admin')" :current="request()->routeIs('admin')" wire:navigate>Admin</flux:navlist.item>
+                    @endif
+                @endauth
+                @guest
+                    <flux:separator vertical variant="subtle" class="my-2"/>
+                    @if (Route::has('register'))
+                        <flux:navlist.item href="{{ route('register') }}" :current="request()->routeIs('register')">Regisztráció</flux:navlist.item>
+                    @endif
+                    <flux:navlist.item href="{{ route('login') }}" :current="request()->routeIs('login')">Bejelentkezés</flux:navlist.item>
+                @endguest
             </flux:navlist.group>
         </flux:navlist>
 
